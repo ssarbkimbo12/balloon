@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>balloon</title>
+	<style type="text/css">
+
+		body{background:pink; perspective: 800px;}
+
+		#wrap{width:1400px; height:800px;margin:auto; padding:0px; overflow: hidden; position: relative;}
+
+		#contents{width:1000px; height:auto; margin:auto; margin-top:100px; }
+
+		#tv{width:1000px; height:500px; background: url('tv.png'); background-size: cover; margin:auto; z-index: 9999; position: fixed;}
+
+		#tv:hover{cursor: pointer;}
+
+		#face{width:215px; height:250px; background: url('face.png');background-size:cover; margin:auto; position: absolute; top:290px;  left: calc(50% - 250px); z-index: -1;}
+
+		#balloon{position:absolute; width:125px; height: 150px; top:365px; left: calc(63% - 250px); z-index: -2; transform: rotate(90deg); background:url('balloon.png'); background-size: cover;}
+
+		#screen{width:500px;height:350px;background:url('screen.gif'); z-index: -3; position: absolute; top:200px; left: calc(50% - 300px); }
+
+		#glitter{width:350px;height:360px;background:url('glitter.png'); position: absolute; top:200px; left: calc(50% - 300px); animation-name:glit;  animation:glit 2s linear infinite;
+	}
+
+		@keyframes glit{
+			from{}
+			to{transform: rotateY(360deg);}
+		}
+
+
+		#glitter2{width:350px;height:200px;background:url('glitter2.gif'); position: absolute; top:300px; left: calc(50% - 300px); }
+			
+	</style>
+	
+</head>
+<body>
+
+<div id="wrap">
+	<div id="contents">
+
+	<div id="tv"></div>
+
+	<div id="face"></div>
+
+	<div id="balloon"></div>
+
+	<div id="screen"></div>	
+
+	<div id="glitter"></div>
+
+	<div id="glitter2"></div>
+
+	</div>
+</div>
+	<audio id="blowup">
+ 		<source src="blowup.mp3" type="audio/mpeg">
+	</audio>
+
+	<audio id="pop">
+ 		<source src="pop.mp3" type="audio/mpeg">
+	</audio>
+
+	<script type="text/javascript">
+
+		var currentBalloon = 1;
+
+			document.getElementById("face").style.visibility = "visible";
+			document.getElementById("glitter").style.visibility = "hidden";
+			document.getElementById("glitter2").style.visibility = "hidden";
+
+		tv.onclick = function(){
+			currentBalloon++;
+
+			blowup.play();
+
+			if (currentBalloon == 5){currentBalloon = 2; document.getElementById("glitter").style.visibility = "hidden";
+			document.getElementById("glitter2").style.visibility = "hidden";document.getElementById("face").style.visibility = "visible";};
+
+			if (currentBalloon ==4){ 
+
+				blowup.pause(); 
+				pop.play(); 
+				document.getElementById("face").style.visibility = "hidden";
+				document.getElementById("glitter").style.visibility = "visible";
+				document.getElementById("glitter2").style.visibility = "visible";
+			}
+
+			changeImage(currentBalloon);
+
+		}
+
+		function changeImage (f) {
+			balloon.style.background = "url('balloon" + f + ".png')";
+			balloon.style.backgroundSize = "cover";
+		}
+	</script>
+
+</body>
+</html>
