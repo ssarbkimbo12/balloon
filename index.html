@@ -4,9 +4,9 @@
 	<title>balloon</title>
 	<style type="text/css">
 
-		body{background:pink; perspective: 800px;}
+		body{background:black; perspective: 800px;}
 
-		#wrap{width:1400px; height:800px;margin:auto; padding:0px; overflow: hidden; position: relative;}
+		#wrap{width:1400px; height:800px;margin:auto; padding:0px; overflow: hidden; position: relative; background:url('rose.gif'); z-index: -9999; position: fixed;}
 
 		#contents{width:1000px; height:auto; margin:auto; margin-top:100px; }
 
@@ -30,13 +30,30 @@
 
 
 		#glitter2{width:350px;height:200px;background:url('glitter2.gif'); position: absolute; top:300px; left: calc(50% - 300px); }
-			
+
+		#ahh{width:400px;height:200px;background:url('ahhhh.gif'); position: absolute; top:100px; left: calc(30% - 300px); }
+
+		#click{width:150px;height:160px;background:url('click.gif'); position: absolute; top:400px; right:200px; }
+
+		#girl{width:350px;height:300px;background:url('girl.gif'); position: absolute; top:500px; left:50px; position: fixed;}
+
+		#girl:hover{cursor: pointer;}
+
+		#arrow{width:200px;height:400px;background:url('arrow.gif'); position: absolute; top:500px; left:-60px; position: fixed;}
+
+		#black{width:950px; height: 610px; position: absolute;margin:auto; margin-top: 100px; background:black; z-index: -9999; left:calc(50% - 475px);}
+
 	</style>
 	
 </head>
 <body>
 
 <div id="wrap">
+
+	<div id="black"></div>
+
+	<div id="rose"></div>
+
 	<div id="contents">
 
 	<div id="tv"></div>
@@ -51,6 +68,8 @@
 
 	<div id="glitter2"></div>
 
+	<div id="click"></div>
+
 	</div>
 </div>
 	<audio id="blowup">
@@ -60,6 +79,16 @@
 	<audio id="pop">
  		<source src="pop.mp3" type="audio/mpeg">
 	</audio>
+
+	<audio id="frog">
+ 		<source src="frogsound.mp3" type="audio/mpeg">
+	</audio>
+
+	<div id="ahh"></div>
+
+	<div id="girl"></div>
+
+	<div id="arrow"></div>
 
 	<script type="text/javascript">
 
@@ -93,6 +122,11 @@
 		function changeImage (f) {
 			balloon.style.background = "url('balloon" + f + ".png')";
 			balloon.style.backgroundSize = "cover";
+		}
+
+
+		girl.onclick = function(){
+			frog.play();
 		}
 	</script>
 
